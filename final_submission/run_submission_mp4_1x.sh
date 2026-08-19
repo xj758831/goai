@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
-# ROS Humble's setup files read optional variables that may be unset.  Load
-# ROS before enabling nounset so the launcher works in a fresh terminal.
+# ROS setup files may read optional variables that are unset. Load ROS before
+# enabling nounset so the launcher works in a fresh terminal.
 set -eo pipefail
 
 PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 cd "$PROJECT_ROOT"
-source /opt/ros/humble/setup.bash
+ROS_SETUP="${ROS_SETUP:-/opt/ros/humble/setup.bash}"
+if [[ ! -f "$ROS_SETUP" ]]; then
+  printf 'ROS setup file not found: %s\n' "$ROS_SETUP" >&2
+  printf 'Set ROS_SETUP to the installed ROS 2 setup.bash path.\n' >&2
+  exit 2
+fi
+source "$ROS_SETUP"
 set -u
 
 PLAN2_PYTHON="${PLAN2_PYTHON:-/home/xj/miniconda3/envs/isaaclab-v232/bin/python}"

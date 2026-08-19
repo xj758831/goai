@@ -7,13 +7,7 @@
 - ROS 同步请求/超时：`6225/0`；
 - 运行过程中没有瞬移或重置机器人状态。
 
-已验证结果的摘要位于：
-
-```text
-logs/mujoco/plan2_v57_full_track_final_20260818_run4/summary.json
-```
-
-锁定成功摘要位于：
+验证摘要位于：
 
 ```text
 logs/mujoco/plan2_v57_full_track_final_20260818_run4/summary.json
@@ -54,45 +48,59 @@ evidence/LOCKED_499S_MANIFEST.md
 - `src/S10_sdk_deploy/scripts/`：ROS 2 尾段导航和点云相关脚本；
 - `config/`：官方路线、尾段行为配置和点云配置；
 - `logs/mujoco/`：运行所需的小型 checkpoint 和验证摘要；
-- `BASELINE_MANIFEST.json`：机器可读的结果、哈希和依赖清单。
+- `BASELINE_MANIFEST.json`：机器可读的结果、哈希和依赖清单；
 - `SUBMISSION_CONTENTS.md`：本次精简保留/排除内容的依据；
 - `tools/verify_submission.py`：只读完整性和运行依赖自检。
 
-## 五、环境要求
+## 五、环境与依赖
 
 本机验证使用的主要环境：
 
-- Ubuntu；
+- Ubuntu 22.04（本机验证环境；不要求必须是 Ubuntu 24.04）；
 - Python 3.11；
 - MuJoCo `3.10.0`；
 - NumPy `1.26.0`；
 - ONNX Runtime `1.20.1`；
 - PyTorch `2.7.0`；
-- ROS 2，包含 `rclpy`、`geometry_msgs`、`nav_msgs`、`std_msgs`。
+- ROS 2 Humble，包含 `rclpy`、`geometry_msgs`、`nav_msgs`、
+  `rosgraph_msgs`、`std_msgs`。
 
-上游 README 写的是 ROS 2 Jazzy；本机验证时使用的是 ROS 2 Humble。另一台电脑应该根据实际安装的 ROS 版本修改 `source` 命令。
+本机使用 ROS 2 Humble。
 
-可以在独立 Python 环境中安装基础依赖：
+先加载 ROS，并安装 ROS 消息包（Humble 示例）：
+
+```bash
+ROS_SETUP=/opt/ros/humble/setup.bash
+source "$ROS_SETUP"
+sudo apt install \
+  ros-humble-rclpy \
+  ros-humble-geometry-msgs \
+  ros-humble-nav-msgs \
+  ros-humble-rosgraph-msgs \
+  ros-humble-std-msgs
+```
+
+再在 Python 3.11 环境中安装本包列出的 Python 依赖：
 
 ```bash
 PLAN2_PYTHON=/home/xj/miniconda3/envs/isaaclab-v232/bin/python
-"$PLAN2_PYTHON" -m pip install "mujoco==3.10.0" "numpy==1.26.0" \
-  "onnxruntime==1.20.1" "Pillow" "PyYAML" "torch"
+"$PLAN2_PYTHON" -m pip install -r requirements.txt
+"$PLAN2_PYTHON" -c "import mujoco; print('MuJoCo', mujoco.__version__)"
 ```
 
-注意：不要直接使用终端默认的 `python`。本机默认 `python` 是 Python
-3.14，而已验证的 MuJoCo 安装在 `isaaclab-v232` 的 Python 3.11 环境中。
-如果另一台电脑使用不同路径，应把下面命令中的 `PLAN2_PYTHON` 改成那个
-已经安装 MuJoCo 3.10.0 的 Python 3.11 解释器。
+`PLAN2_PYTHON` 只是本机示例路径。另一台电脑应改成已经安装 Python 3.11、
+MuJoCo 和 ONNX Runtime 的解释器。运行可视化需要可用的 X11/GLFW 显示，
+并把 `DISPLAY` 改成实际显示编号。
 
-## 七、运行完整 MuJoCo 基线
+## 六、运行完整 MuJoCo 基线
 
 下面命令用于重新运行 v57。`--output-dir` 必须使用一个新的、尚不存在的目录。
 Fast DDS 的 ROS domain 必须在 `0..232` 范围内。
 
 ```bash
-cd /home/xj/Downloads/goai_follow_499_final_submission
-source /opt/ros/humble/setup.bash
+cd /home/xj/Downloads/final_submission
+ROS_SETUP=/opt/ros/humble/setup.bash
+source "$ROS_SETUP"
 PLAN2_PYTHON=/home/xj/miniconda3/envs/isaaclab-v232/bin/python
 "$PLAN2_PYTHON" -c "import mujoco; print('MuJoCo', mujoco.__version__)"
 RUN_DIR="logs/mujoco/v57_reproduction_$(date +%Y%m%d_%H%M%S)"
@@ -122,10 +130,11 @@ env DISPLAY=:1 MUJOCO_GL=glfw \
 - `--viewer-speed 8` 和 `--expert-viewer-speed 8` 让所有阶段使用同一显示倍率，避免坑底降速；显示倍率不改变成绩；
 - 需要使用没有被其他 ROS 程序占用的 `--ros-domain`。
 
-为避免多行命令复制时漏掉参数，提交录制可以直接运行副本中附带的启动脚本：
+为避免多行命令复制时漏掉参数，提交录制可以直接运行附带的启动脚本：
 
 ```bash
-cd /home/xj/Downloads/goai_follow_499_final_submission
+cd /home/xj/Downloads/final_submission
+export ROS_SETUP=/opt/ros/humble/setup.bash
 bash run_submission_mp4_1x.sh
 ```
 
@@ -135,8 +144,10 @@ bash run_submission_mp4_1x.sh
 提交前可在同一 Python/ROS 环境中执行只读自检：
 
 ```bash
-source /opt/ros/humble/setup.bash
-/home/xj/miniconda3/envs/isaaclab-v232/bin/python tools/verify_submission.py --runtime
+ROS_SETUP=/opt/ros/humble/setup.bash
+source "$ROS_SETUP"
+PLAN2_PYTHON=/home/xj/miniconda3/envs/isaaclab-v232/bin/python
+"$PLAN2_PYTHON" tools/verify_submission.py --runtime
 sha256sum -c SUBMISSION_MANIFEST.sha256
 ```
 
@@ -147,3 +158,9 @@ route_complete=true
 reached_score_count=33
 last_reached_score=32
 ```
+
+## 八、限制说明
+
+当前结果使用官方 `policy.onnx`、已知路线和经过验证的 Plan2 过坑专家控制器。
+点云代码是只读 shadow observer，不发布 `cmd_vel`，也没有接入当前 ONNX policy
+的动作输出。

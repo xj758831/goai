@@ -1,7 +1,7 @@
 # Clean Submission Contents
 
-This directory was extracted from `goai_follow_499_baseline_submission` as a
-standalone, non-destructive clean copy. The source directory was not deleted or
+This directory is the cleaned `final_submission` package extracted from the
+verified baseline. The original baseline directory was not deleted or
 overwritten.
 
 ## Included
@@ -16,7 +16,8 @@ overwritten.
 - The four runtime checkpoint/trace files declared in
   `BASELINE_MANIFEST.json`.
 - The locked 33/33 success summary and its evidence manifest.
-- English and Chinese reproduction instructions and a read-only verifier.
+- English and Chinese reproduction instructions, a dependency list, and a
+  read-only verifier.
 
 Some retained modules have historical `train_` or `search_` names. They remain
 because the current expert controller imports classes, constants, or helper
