@@ -1,0 +1,52 @@
+# Isolated MuJoCo 3D ray proxy -> S10 base_link point-cloud adapter.
+topics:
+  front_cloud: /sim/LIDAR/POINTS
+  rear_cloud: ""
+  odom: /odom
+  output_cloud: /goai_follow/perception/cloud_base
+  features: /goai_follow/perception/terrain_features
+  status: /goai_follow/perception/status
+
+runtime:
+  rate_hz: 10.0
+  stale_cloud_seconds: 0.30
+  console_interval_seconds: 1.0
+
+sensor:
+  # Proxy points are in the existing front lidar frame. Apply the S10 URDF mount.
+  front_translation_m: [0.22341, 0.0, -0.0001]
+  front_yaw_rad: 0.0
+  rear_translation_m: [-0.22341, 0.0, -0.0001]
+  rear_yaw_rad: 3.141592653589793
+  min_range_m: 0.25
+  max_range_m: 10.0
+  roi_x_m: [-5.0, 5.0]
+  roi_y_m: [-5.0, 5.0]
+  roi_z_m: [-2.0, 2.5]
+  voxel_size_m: 0.05
+  max_points: 24000
+  angular_bins: 36
+  front_x_bins: 8
+  front_x_min_m: -0.5
+  front_x_max_m: 2.5
+  front_y_half_width_m: 0.65
+
+events:
+  analysis_x_m: [0.25, 1.8]
+  baseline_x_m: [0.25, 0.55]
+  y_half_width_m: 0.65
+  minimum_support_points: 8
+  step_height_threshold_m: 0.12
+  drop_depth_threshold_m: 0.15
+  wall_height_threshold_m: 0.35
+  wall_min_width_m: 0.45
+  compact_max_width_m: 0.35
+  compact_height_threshold_m: 0.20
+  confirm_frames: 3
+  release_frames: 2
+  minimum_confidence: 0.25
+
+visualization:
+  range_m: 4.0
+  update_interval_seconds: 0.25
+  snapshot_interval_seconds: 2.0

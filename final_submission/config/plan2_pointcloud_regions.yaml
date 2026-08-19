@@ -1,0 +1,94 @@
+schema_version: 1
+interpretation: >-
+  Read-only route-stage labels for Plan2 point-cloud logs. These labels describe
+  where the verified navigator is in the official score sequence; they are not
+  obstacle ground truth and must not trigger control commands.
+sources:
+  official_waypoints: config/waypoints.yaml
+  verified_tail_route: config/path_plan2_wp24_entry_rightshift_20260815.yaml
+  verified_tail_behavior: config/plan2_wp25_wp27_behavior_straight_corridor.yaml
+regions:
+  - id: START_APPROACH
+    target_scores: [0]
+    evidence: Official start to score 0.
+  - id: LOWER_ENTRY_ASCENT
+    target_scores: [1]
+    reached_counts_without_target: [1]
+    evidence: Score 1 is 0.475 m above the official start and includes the first route gate.
+  - id: LOWER_LEVEL_ROUTE
+    target_scores: [2, 3, 4, 5]
+    evidence: Official scores 2 through 5 remain at z=0.475 m.
+  - id: LOWER_STAIR_ASCENT
+    target_scores: [6, 7]
+    evidence: Official score height rises from 0.475 m to 1.165 m.
+  - id: MID_LEVEL_ROUTE
+    target_scores: [8, 9, 10, 11, 12]
+    reached_counts_without_target: [11, 12]
+    evidence: Official scores 8 through 12 and their verified gates remain at z=1.165 m.
+  - id: MID_STAIR_DESCENT
+    target_scores: [13]
+    evidence: Official score height falls from 1.165 m to 0.475 m.
+  - id: PIT_APPROACH
+    target_scores: [14]
+    evidence: Last level scoring segment before the official pit-bottom score.
+  - id: PIT_DESCENT
+    target_scores: [15]
+    evidence: Official score 15 is the 0.100 m pit-bottom scoring point.
+  - id: PIT_ASCENT_EXPERT
+    phases: [PIT EXPERT]
+    evidence: Frozen 0.3769105421 m pit expert phase reported by the full-track runner.
+  - id: POST_PIT_ROUTE
+    target_scores: [16, 17]
+    evidence: Official policy resumes after the pit and approaches the tall ascent.
+  - id: TALL_STAIR_ASCENT
+    target_scores: [18]
+    evidence: Official score height rises from 0.475 m to 2.200 m.
+  - id: HIGH_PLATFORM_ROUTE
+    target_scores: [19, 20]
+    evidence: Official scores 19 and 20 remain near z=2.360 m.
+  - id: TALL_STAIR_DESCENT
+    target_scores: [21]
+    evidence: Official score height falls from 2.360 m to 0.475 m.
+  - id: LOWER_TRANSFER_ROUTE
+    target_scores: [22]
+    evidence: Level transfer from score 21 to score 22 at z=0.475 m.
+  - id: SECOND_STAIR_ASCENT
+    target_scores: [23]
+    evidence: Official score height rises from 0.475 m to 1.670 m.
+  - id: WP23_TO_WP24_DETOUR
+    reached_counts_without_target: [24]
+    evidence: Two verified route gates bypass the blocked official score 23 to 24 segment.
+  - id: WP24_POCKET_ENTRY
+    target_scores: [24]
+    evidence: Verified straight entry into official score 24.
+  - id: WP24_RETRACE_TO_WP25
+    target_scores: [25]
+    reached_counts_without_target: [25]
+    evidence: Verified behavior enters score 24, reverses on the entry line, then turns toward score 25.
+  - id: FINAL_STAIR_ASCENT
+    target_scores: [26]
+    evidence: Verified final-stair behavior climbs from score 25 toward score 26.
+  - id: WP27_LANDING_TRAVERSE
+    target_scores: [27]
+    evidence: Verified landing, east turn, platform traverse, brake, and hold behavior for score 27.
+  - id: UPPER_STAIR_ASCENT
+    target_scores: [28]
+    evidence: Official score height rises from 2.700 m to 3.750 m.
+  - id: UPPER_PLATFORM_RETURN
+    target_scores: [29]
+    evidence: Official score 29 remains on the z=3.750 m upper platform.
+  - id: WP29_TO_WP30_MARKERS
+    reached_counts_without_target: [30]
+    evidence: User marker 1 approaches score 30 along the verified line.
+  - id: WP30_SCORE_RECOVERY
+    target_scores: [30]
+    evidence: Official score 30 plus the verified local recovery behavior.
+  - id: POST_WP30_TO_WP31_MARKERS
+    reached_counts_without_target: [31]
+    evidence: User markers 2 and 3 clear score 30 and enter the score 31 approach.
+  - id: WP31_SCORE_APPROACH
+    target_scores: [31]
+    evidence: Frozen WP31-left scoring approach.
+  - id: WP32_FINISH_APPROACH
+    target_scores: [32]
+    evidence: Verified reverse-to-anchor, alignment, and official score 32 finish approach.

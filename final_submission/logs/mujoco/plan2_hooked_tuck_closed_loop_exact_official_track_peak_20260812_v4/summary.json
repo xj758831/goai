@@ -1,0 +1,404 @@
+{
+  "purpose": "closed-loop staged plan2 hooked-tuck controller on the exact official track",
+  "mechanical_feasibility_only": true,
+  "deployable": false,
+  "training_performed": false,
+  "oracle_front_event_used": true,
+  "oracle_height_top_events_used": true,
+  "torque_mode": "research_peak",
+  "in_memory_peak_limits_applied": true,
+  "competition_peak_threshold_confirmed": false,
+  "official_assets_modified": false,
+  "geometry_scope": "exact unmodified official S10_track.xml",
+  "official_track_sha256": "f1d373ab39ec38344aa6ada5c2ca18594c348448e6c4bb382409bebce15eee6d",
+  "report": {
+    "label": "plan2_hooked_tuck_closed_loop_exact_official_track",
+    "depth_m": 0.3769105421,
+    "command_mps": 0.65,
+    "lateral_m": 0.0,
+    "yaw_deg": 0.0,
+    "seed": 118000,
+    "success": true,
+    "termination_reason": "success",
+    "hard_failure": false,
+    "alignment_triggered": true,
+    "alignment_trigger_step": 2,
+    "approach_triggered": true,
+    "approach_trigger_step": 90,
+    "front_phase_trigger_step": 192,
+    "true_front_latch_step": 186,
+    "prefix_action_count": 2,
+    "prefix_action_sha256": "e44f1f64f0b8fa63235b9ec42c3351f69399741fb71a8460adca26f4437400cb",
+    "front_top_latched": true,
+    "rear_top_latched": true,
+    "base_cross_latched": true,
+    "time_s": 5.199999999999977,
+    "episode_steps": 260,
+    "max_abs_roll_deg": 6.289140673415572,
+    "max_abs_pitch_deg": 38.84775677255847,
+    "max_contact_force_n": 363.8715730578226,
+    "contact_force_above_500_n": false,
+    "front_support_rate_after_approach": 0.34705882352941175,
+    "rear_pair_progress_gain_after_front_m": 2.0745061368041133,
+    "rear_pair_height_gain_after_front_m": 0.3806492018444863,
+    "front_pair_height_gain_m": 0.6424289400502352,
+    "front_pair_progress_gain_m": 2.241312006330416,
+    "peak_front_top_margin_m": 0.01857846838008337,
+    "base_progress_gain_after_approach_m": 2.151600031854972,
+    "mean_residual_l2": 1.1618741533800234,
+    "mean_alignment_target_l2": 0.10275000840039052,
+    "steering_left_right": [
+      -0.07183982778796416,
+      0.025829873998990376
+    ],
+    "candidate_pre_vector": [
+      0.19937769924548404,
+      0.2517202250555746,
+      0.04803101871113838,
+      0.4315532357558023,
+      0.4298490792121921,
+      0.15012537813227492
+    ],
+    "candidate_post_vector": [
+      -0.4720384143690797,
+      -0.789577622663487,
+      -0.8,
+      0.16374893005476115,
+      0.4431900382445205,
+      -0.3554872765225221,
+      -0.35492544280917726,
+      0.4776569330652595
+    ],
+    "prelift_from_early": true,
+    "pre_fade_start_seconds": 0.65,
+    "pre_fade_duration_seconds": 0.35,
+    "front_post_delay_seconds": 0.0,
+    "late_post_boost_scale": 0.0,
+    "late_post_boost_delay_seconds": 0.8,
+    "late_post_boost_hold_seconds": 0.35,
+    "late_post_boost_vector": [
+      -0.12303600519129451,
+      -0.28614764931414577,
+      -0.3,
+      0.05488872975748723,
+      0.2429452033215686,
+      -0.1373600661153608,
+      -0.029806906309262055,
+      -0.20258615935283894
+    ],
+    "late_post_target_limit": 1.0,
+    "late_post_second_vector": [
+      0.1416115243107239,
+      0.23687328679904607,
+      0.24,
+      -0.04912467901642834,
+      -0.13295701147335615,
+      0.10664618295675662,
+      0.10647763284275318,
+      -0.14329707991957785
+    ],
+    "late_post_second_delay_seconds": 0.35,
+    "late_post_second_hold_seconds": 0.4,
+    "second_stage_configured": true,
+    "late_post_height_vector": [
+      0.0,
+      0.3735108110636587,
+      0.2221305998225837,
+      0.0,
+      -0.09218034336749317,
+      0.4522280842238395,
+      0.0,
+      0.0
+    ],
+    "late_post_height_front_leg_vector": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "late_post_height_trigger_m": 0.4,
+    "late_post_height_delay_after_front_seconds": null,
+    "late_post_height_hold_seconds": 0.4,
+    "late_post_height_dwell_steps": 1,
+    "height_stage_configured": true,
+    "height_stage_trigger_step": 209,
+    "late_post_top_vector": [
+      0.0,
+      0.7647440454826975,
+      0.5939086051222283,
+      0.0,
+      -0.2566687903374003,
+      0.01409775589251948,
+      -0.4627136661973983,
+      -0.29250840925014915
+    ],
+    "late_post_top_front_leg_vector": [
+      0.0,
+      -0.4585732953090014,
+      -0.47650266890002213,
+      0.0,
+      -0.00880232340453968,
+      0.17479189638536202
+    ],
+    "late_post_top_trigger_m": 0.45,
+    "late_post_top_hold_seconds": 0.35,
+    "late_post_top_dwell_steps": 1,
+    "late_post_top_score_delay_seconds": 0.12,
+    "late_post_top_leg_rate_per_second": 4.0,
+    "top_stage_configured": true,
+    "top_stage_trigger_step": 211,
+    "peak_rear_height_after_second_m": 0.5504217095445025,
+    "peak_rear_progress_after_second_m": 1.7811272110138894,
+    "peak_rear_top_proximity_after_second_m": -0.0,
+    "front_support_rate_after_second": 0.82,
+    "peak_rear_top_proximity_after_height_m": -0.0,
+    "rear_height_at_best_proximity_after_height_m": 0.5477001852418832,
+    "rear_progress_at_best_proximity_after_height_m": 1.7111468583644616,
+    "peak_rear_progress_above_height_gate_m": 1.7811272110138894,
+    "front_support_rate_after_height": 0.8235294117647058,
+    "peak_rear_top_proximity_after_top_m": -0.0,
+    "rear_height_at_best_proximity_after_top_m": 0.5477001852418832,
+    "rear_progress_at_best_proximity_after_top_m": 1.7111468583644616,
+    "peak_rear_progress_after_top_m": 1.7811272110138894,
+    "front_support_rate_after_top": 0.813953488372093,
+    "final_rear_pair_height_m": 0.5464274307123533,
+    "final_rear_pair_progress_m": 1.7811272110138894,
+    "precontact_leg_vector": [
+      -0.0,
+      0.17884358517051058,
+      0.18583604087100863,
+      -0.0,
+      0.003432906127770475,
+      -0.06816883959029119,
+      0.0,
+      -0.17884358517051058,
+      -0.18583604087100863,
+      0.0,
+      -0.003432906127770475,
+      0.06816883959029119
+    ],
+    "precontact_leg_delay_after_approach_seconds": 1.15,
+    "precontact_leg_hold_seconds": 0.24,
+    "precontact_leg_rate_per_second": 4.0,
+    "pullover_launch_leg_vector": [
+      0.0,
+      -0.8,
+      0.8,
+      0.0,
+      -0.8,
+      0.8,
+      0.0,
+      -0.5599999999999999,
+      0.5599999999999999,
+      0.0,
+      -0.8,
+      0.8
+    ],
+    "pullover_launch_delay_after_front_seconds": 0.03,
+    "pullover_launch_hold_seconds": 0.2,
+    "pullover_tuck_leg_vector": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.3,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pullover_tuck_delay_after_launch_seconds": 0.14,
+    "pullover_tuck_hold_seconds": 0.2,
+    "pullover_leg_rate_per_second": 5.0,
+    "pullover_top_rear_wheel_vector": [
+      0.0,
+      0.0
+    ],
+    "pullover_top_rear_wheel_delay_seconds": 0.0,
+    "pullover_top_rear_wheel_hold_seconds": 0.16,
+    "pullover_observed_steps": 75,
+    "peak_base_progress_after_pullover_m": 2.1514448144706213,
+    "peak_base_z_after_pullover_m": 0.9052849630464853,
+    "peak_pitch_after_pullover_deg": -0.9735906307588116,
+    "allow_body_wall_contact": false,
+    "threepoint_swing_leg_vector": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "threepoint_delay_seconds": 0.0,
+    "threepoint_hold_seconds": 0.2,
+    "threepoint_leg_rate_per_second": null,
+    "threepoint_monitor_enabled": true,
+    "threepoint_freeze_leading_leg": false,
+    "threepoint_min_leading_rear_contact_force_n": 50.0,
+    "threepoint_max_abs_roll_deg": 10.0,
+    "threepoint_trigger_dwell_steps": 1,
+    "threepoint_trigger_step": 238,
+    "threepoint_leading_rear_index": 3,
+    "threepoint_lagging_rear_index": 2,
+    "threepoint_trigger_rear_height_m": [
+      0.5559227202005296,
+      0.5473434061610979
+    ],
+    "threepoint_trigger_rear_progress_m": [
+      1.6882813784000676,
+      1.753364665469735
+    ],
+    "threepoint_trigger_rear_force_n": [
+      0.0,
+      55.749927014487135
+    ],
+    "peak_threepoint_lagging_height_m": 0.5795209480202919,
+    "peak_threepoint_lagging_progress_m": 1.7811272110138894,
+    "peak_threepoint_lagging_top_margin_m": 0.011959028396779203,
+    "threepoint_front_support_rate": 0.9565217391304348,
+    "threepoint_leading_geometry_rate": 1.0,
+    "threepoint_leading_contact_rate": 0.9565217391304348,
+    "late_momentum_leg_vector": [
+      -0.0,
+      0.11922905678034038,
+      0.12389069391400576,
+      -0.0,
+      0.002288604085180317,
+      -0.04544589306019413,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0,
+      -0.0
+    ],
+    "late_momentum_leg_delay_seconds": 0.1,
+    "late_momentum_leg_hold_seconds": 0.22,
+    "late_momentum_leg_rate_per_second": 4.0,
+    "late_prejump_leg_vector": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      0.0
+    ],
+    "late_prejump_leg_delay_seconds": 0.5,
+    "late_prejump_leg_hold_seconds": 0.1,
+    "late_prejump_leg_rate_per_second": 5.0,
+    "late_momentum_wheel_vector": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "late_momentum_wheel_delay_seconds": 0.0,
+    "late_momentum_wheel_hold_seconds": 0.4,
+    "late_front_wheel_vector": [
+      0.0,
+      0.0
+    ],
+    "late_front_wheel_delay_seconds": 0.6,
+    "late_front_wheel_hold_seconds": 1.2,
+    "late_front_leg_vector": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "oracle_front_anchor_latched": true,
+    "oracle_front_wheel_action": -1.2,
+    "oracle_freeze_front_legs": false,
+    "oracle_front_anchor_delay_seconds": 0.82,
+    "torque_envelope": {
+      "leg_peak_limit_nm": 76.4,
+      "wheel_peak_limit_nm": 21.6,
+      "leg_continuous_limit_nm": 50.0,
+      "wheel_continuous_limit_nm": 14.0,
+      "max_continuous_exceedance_s": 0.5,
+      "max_leg_abs_torque_nm": 61.41102727521678,
+      "max_wheel_abs_torque_nm": 18.015592454436515,
+      "max_leg_continuous_exceedance_s": 0.060000000000000046,
+      "max_wheel_continuous_exceedance_s": 0.017000000000000008,
+      "duration_violation": false
+    },
+    "body_wall_contact_audit": {
+      "allowed_for_this_rollout": false,
+      "observed": false,
+      "total_duration_s": 0.0,
+      "longest_continuous_duration_s": 0.0,
+      "peak_force_n": 0.0
+    },
+    "milestone_rank": 4,
+    "milestone_name": "stable_exit",
+    "tie_break_score": 5445.572226684085
+  },
+  "inputs": {
+    "reference": {
+      "path": "/home/xj/Downloads/goai_embodied_future_material-plan2/logs/mujoco/s10_m20_lidar72_capability_depth021_complementary_distill_base10_alt1_lr1e6_epoch100_20260809_v1/checkpoint_best_distilled.pt",
+      "sha256": "a04308a3ca40243cd9736b870471dc3ac08b481ed24d3dd71320b4789d535af3"
+    },
+    "phase": {
+      "path": "/home/xj/Downloads/goai_embodied_future_material-plan2/logs/mujoco/s10_m20_phase_estimator_19cases_20260810_v1/phase_estimator.pt",
+      "sha256": "6d497ed2b21765773ab286cebedf459f46a9f7b70ace0d649f63250658e56a66"
+    },
+    "teacher": {
+      "path": "/home/xj/Downloads/goai_embodied_future_material-plan2/logs/mujoco/s10_m20_depth0345_center_peak764_216_lateboost08_s030_frompeak_bound4_rate25_wheel08_cem40x3_20260811_v1/best_teacher.npz",
+      "sha256": "d1ed788fec7aaff2466e20a63e491933652bc7b03c26a83a11f45e1839eb5ab2"
+    },
+    "first": {
+      "path": "/home/xj/Downloads/goai_embodied_future_material-plan2/logs/mujoco/s10_m20_depth0345_center_peak764_216_independent_lateboost08_hold035_cem48x4_20260811_v1/best_late_boost.npz",
+      "sha256": "46b4b0cb266b75edb5ecba865ca68051489b35ee253da19a1ab293251c62d228"
+    },
+    "lift": {
+      "path": "/home/xj/Downloads/goai_embodied_future_material-plan2/logs/mujoco/s10_m20_depth0345_center_peak764_216_oracleanchor_m05_delay082_secondphase035_hold040_rearprox_cem40x3_20260811_v1/best_late_boost.npz",
+      "sha256": "cffbe4e47b29c9d4c70fb095c6ce3eb34d1f690f02be64b382b38ab189dc3174"
+    },
+    "height_summary": {
+      "path": "/home/xj/Downloads/goai_embodied_future_material-plan2/logs/mujoco/s10_m20_depth0345_oracle_rearplacement_trigger040_hold040_cem48x4_20260811_v1/summary.json",
+      "sha256": "54af77a8b39944ca4d307c320c67bb09506a8d4f0858c843a6ef89cb1573fbac"
+    },
+    "joint_summary": {
+      "path": "/home/xj/Downloads/goai_embodied_future_material-plan2/logs/mujoco/s10_m20_depth0345_oracle_jointcoord_warmfrontrear_rate40_cem48x4_20260811_v1/summary.json",
+      "sha256": "2ae68f4259b08883f4068314969c0abc3d57742bc4d0abc07d5dc99ebcc245c1"
+    },
+    "old_success": {
+      "path": "/home/xj/Downloads/goai_embodied_future_material-plan2/logs/mujoco/s10_m20_depth0345_oracle_frontpreload_magaxis7_20260811_v1/summary.json",
+      "sha256": "2bd1040afc71605fc30d9d713f0338ecc060c2ecd64fcdf89e3951d53012d4f8"
+    },
+    "precontact": {
+      "path": "/home/xj/Downloads/goai_embodied_future_material-plan2/logs/mujoco/s10_m20_precontact_teacher_depth03456_local60_20260812_v1/summary.json",
+      "sha256": "44ea4dc44b605f8025e0f14739fbe0bb050a33e3e2976fd5109df1d95dc63d8c"
+    },
+    "source": {
+      "path": "/home/xj/Downloads/goai_embodied_future_material-plan2/logs/mujoco/plan2_hooked_rear_tuck_additive_grid72_20260812_v2/summary.json",
+      "sha256": "b77b29168dff4d9c3cc748af30a519d3d235dc5776cdd6243817790deee1cfd3"
+    },
+    "official_track": {
+      "path": "/home/xj/Downloads/goai_embodied_future_material-plan2/src/S10_sdk_deploy/S10_description/s10_mjcf/mjcf/S10_track.xml",
+      "sha256": "f1d373ab39ec38344aa6ada5c2ca18594c348448e6c4bb382409bebce15eee6d"
+    }
+  },
+  "protected_original_root": "/home/xj/Downloads/goai_embodied_future_material-main",
+  "all_inputs_inside_plan2": true,
+  "official_assets_before": {
+    "src/S10_sdk_deploy/S10_description/s10_mjcf/mjcf/S10.xml": "74582d1c27f43eed6c86befb0d11c039d34ae4d1cee7aa2cad3e48b7c005bcf4",
+    "src/S10_sdk_deploy/S10_description/s10_mjcf/mjcf/scene.xml": "832d326e8fb14f7976b355ee8636d125c80d74c07894adb9ab0f2232c3e9d564",
+    "src/S10_sdk_deploy/S10_description/s10_mjcf/mjcf/S10_track.xml": "f1d373ab39ec38344aa6ada5c2ca18594c348448e6c4bb382409bebce15eee6d"
+  },
+  "official_assets_after": {
+    "src/S10_sdk_deploy/S10_description/s10_mjcf/mjcf/S10.xml": "74582d1c27f43eed6c86befb0d11c039d34ae4d1cee7aa2cad3e48b7c005bcf4",
+    "src/S10_sdk_deploy/S10_description/s10_mjcf/mjcf/scene.xml": "832d326e8fb14f7976b355ee8636d125c80d74c07894adb9ab0f2232c3e9d564",
+    "src/S10_sdk_deploy/S10_description/s10_mjcf/mjcf/S10_track.xml": "f1d373ab39ec38344aa6ada5c2ca18594c348448e6c4bb382409bebce15eee6d"
+  }
+}

@@ -1,0 +1,10 @@
+mujoco==3.10.0
+numpy==1.26.0
+onnxruntime==1.20.1
+Pillow
+PyYAML
+torch==2.7.0
+opencv-python
+matplotlib
+imageio
+imageio-ffmpeg

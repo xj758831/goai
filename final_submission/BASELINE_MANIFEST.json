@@ -1,0 +1,32 @@
+{
+  "snapshot": "plan2_v57_499s_locked_20260819",
+  "purpose": "reproducible MuJoCo engineering baseline; not a final self-trained perception submission",
+  "official_scores": 33,
+  "pit_depth_m": 0.3769105421,
+  "raw_simulation_time_s": 499.9599999950894,
+  "navigation_score_time_s": 416.6333333292412,
+  "navigation_divisor": 1.2,
+  "policy_status": "shipped_official_57d_onnx",
+  "perception_policy_status": "not_self_trained; pointcloud_is_shadow_only",
+  "route_complete": true,
+  "protected_assets": {
+    "src/S10_sdk_deploy/S10_description/s10_mjcf/mjcf/S10.xml": "74582d1c27f43eed6c86befb0d11c039d34ae4d1cee7aa2cad3e48b7c005bcf4",
+    "src/S10_sdk_deploy/S10_description/s10_mjcf/mjcf/scene.xml": "832d326e8fb14f7976b355ee8636d125c80d74c07894adb9ab0f2232c3e9d564",
+    "src/S10_sdk_deploy/S10_description/s10_mjcf/mjcf/S10_track.xml": "f1d373ab39ec38344aa6ada5c2ca18594c348448e6c4bb382409bebce15eee6d",
+    "src/S10_sdk_deploy/policy/policy.onnx": "0ac99f3093d4a984d7587b88d57300cbf7ec2f788401dfa1570d1e4800568f6b"
+  },
+  "entry_files": {
+    "scripts/mujoco/run_plan2_full_track_closed_loop_v57.py": "61d636d2f26f60427bd8db4c2b6ea342d2fda2732e2b9b730c6a64e235269a7a",
+    "scripts/mujoco/plan2_wp30_closed_loop_v57.py": "504bdca638254ed4688806dd105571dff40055cf41580de0becb4c238efcc524",
+    "scripts/mujoco/run_plan2_full_track_pointcloud_recovery_candidate.py": "4fc83d8abcaf4e5e71a453e6ebde4d44582804af51c8aa7c1418784e500655ad",
+    "src/S10_sdk_deploy/scripts/plan2_expert_tail_navigator_sim_sync.py": "4701a376eb6118be9f354b02928693778fd5f3cb8e2a5cd7bc5a5ee079b3bdbc",
+    "config/path_plan2_wp24_entry_rightshift_20260815.yaml": "381ffbc0082d207fda1ed1af887a2821227b63fe39aef133d726751c78139add",
+    "config/plan2_wp25_wp27_behavior_straight_corridor.yaml": "0522ae3b079c178a837ab5dc7d3245193ec98da2f1ae924ad502cac2fd5c9113"
+  },
+  "required_runtime_checkpoints": [
+    "logs/mujoco/plan2_hooked_tuck_closed_loop_exact_official_track_peak_20260812_v4/summary.json",
+    "logs/mujoco/plan2_hooked_tuck_closed_loop_exact_official_track_peak_20260812_v4/trace.npz",
+    "logs/mujoco/s10_m20_lidar72_capability_depth021_complementary_distill_base10_alt1_lr1e6_epoch100_20260809_v1/checkpoint_best_distilled.pt",
+    "logs/mujoco/s10_m20_phase_estimator_19cases_20260810_v1/phase_estimator.pt"
+  ]
+}

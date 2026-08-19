@@ -1,0 +1,55 @@
+schema_version: 1
+interpretation: >-
+  Provisional read-only advisories fitted to completed Plan2 logs. They are
+  in-sample diagnostics, not validated controllers.
+control_authority: false
+publishes_cmd_vel: false
+rules:
+  wp30_stall_risk:
+    event: WP30_STALL_RISK
+    region_id: WP30_SCORE_RECOVERY
+    fit_run_names:
+      - plan2_pointcloud_full_20260816_222715
+      - plan2_pointcloud_repeat_20260816_224605
+      - plan2_pointcloud_natural_20260816_230941
+    minimum_region_elapsed_s: 22.0
+    motion_window_s: 4.0
+    maximum_planar_displacement_m: 0.15
+    maximum_closest_distance_m: 0.25
+    minimum_front_vertical_span_m: 0.85
+    confirm_frames: 3
+    evidence: >-
+      The two successful shadow runs left this region after 20.503 s. The
+      natural failure remained near a close high surface and first matched
+      these conditions about 9.4 s before platform-height loss.
+    evaluation_only:
+      kind: base_z_below
+      threshold_m: 3.5
+      note: >-
+        Base height is used only to timestamp the observed failure for
+        evaluation; it is not an input to the stall advisory.
+  wp24_entry_stall_risk:
+    event: WP24_ENTRY_STALL_RISK
+    region_id: WP24_POCKET_ENTRY
+    fit_run_names:
+      - plan2_pointcloud_full_20260816_222715
+      - plan2_pointcloud_repeat_20260816_224605
+      - plan2_pointcloud_natural_20260816_230941
+      - plan2_pointcloud_holdout_20260816_232226
+    minimum_region_elapsed_s: 8.0
+    motion_window_s: 4.0
+    maximum_planar_displacement_m: 0.15
+    maximum_closest_distance_m: 0.25
+    minimum_front_vertical_span_m: 0.65
+    confirm_frames: 3
+    evidence: >-
+      Three runs that scored WP24 left this region in 6.565-6.767 s. The
+      holdout run used to fit this provisional rule remained in the region
+      for 335.017 s and first matched at 8.282 s.
+    evaluation_only:
+      kind: region_duration_exceeds
+      threshold_s: 10.0
+      note: >-
+        Remaining in the WP24 entry region for 10 s defines a missed-entry
+        deadline for this offline evaluation. The duration is not an advisory
+        input, and the threshold was selected from these same four runs.

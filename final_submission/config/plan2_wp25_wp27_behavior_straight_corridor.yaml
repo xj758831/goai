@@ -1,0 +1,174 @@
+# Candidate based on the successful WP28-push configuration. The only added
+# behavior is the user's WP24 manoeuvre: enter straight, score, reverse along
+# the same line until the chassis is clear, and only then turn toward WP25.
+stock_path_indices:
+  wp25: 33
+  wp26: 34
+
+# These scoring points sit immediately behind a riser.  The default 1.5 m
+# slowdown removed momentum before the wheels cleared the edge.
+stock_climb_speed_profiles:
+  27:
+    max_forward: 0.60
+    slowdown_distance: 0.20
+  34:
+    max_forward: 0.80
+    slowdown_distance: 0.20
+
+wp24_approach:
+  enabled: true
+  after_path_index: 28
+  target_path_index: 29
+  heading_deg: 0.0
+  target_x: 31.68
+  center_y: 14.9907
+  target_radius: 0.08
+  max_time: 15.0
+  max_center_error: 0.30
+  align_tolerance_deg: 6.0
+  align_stable_time: 0.25
+  align_yaw_gain: 2.0
+  align_max_yaw: 0.75
+  align_forward: 0.20
+  forward_speed: 0.65
+  drive_yaw_gain: 1.8
+  center_yaw_gain: 1.0
+  drive_max_yaw: 0.20
+  drive_stop_angle_deg: 10.0
+
+wp24_retrace:
+  enabled: true
+  entry_path_index: 29
+  wp24_path_index: 30
+  exit_path_index: 31
+  next_path_index: 32
+  heading_deg: 90.0
+  center_x: 31.68
+  score_min_y: 15.43
+  exit_y: 14.78
+  max_time: 20.0
+  # Zero means retry until WP24 is scored or the overall simulation ends.
+  max_attempts: 0
+  retry_exit_y: 14.72
+  retry_reverse_speed: 0.45
+  retry_center_y: 14.62
+  retry_center_tolerance: 0.045
+  retry_center_y_tolerance: 0.06
+  retry_center_stable_time: 0.20
+  retry_center_position_gain: 1.0
+  retry_center_lateral_gain: 1.2
+  retry_center_max_forward: 0.16
+  retry_center_max_side: 0.24
+  max_center_error: 0.35
+  align_tolerance_deg: 6.0
+  align_stable_time: 0.20
+  align_yaw_gain: 2.0
+  align_max_yaw: 0.70
+  align_hold_y: 14.9907
+  align_creep_bias: 0.10
+  align_position_gain: 0.80
+  align_max_forward: 0.20
+  align_lateral_gain: 0.90
+  align_max_side: 0.20
+  align_center_tolerance: 0.07
+  forward_speed: 0.42
+  reverse_speed: 0.55
+  drive_yaw_gain: 1.8
+  drive_max_yaw: 0.18
+  drive_stop_angle_deg: 10.0
+  settle_time: 0.15
+
+final_stair:
+  min_y: 20.25
+  min_base_z: 2.98
+  # Zero disables the local timer; the full-run simulation timeout remains.
+  max_climb_time: 0
+
+landing_trigger:
+  min_y: 21.10
+  min_base_z: 3.09
+  max_abs_vertical_speed: 0.12
+  stable_time: 0.18
+
+final_stair_push:
+  target: [33.6000, 21.4800]
+  min_landed_y: 21.4000
+  min_base_z: 3.09
+  radius: 0.10
+  max_y: 21.6200
+  max_time: 8.0
+  max_forward: 0.50
+  min_forward: 0.22
+  max_yaw: 0.20
+  slowdown_distance: 0.35
+  hold_position_gain: 0.40
+  max_hold_speed: 0.08
+  max_settle_speed: 0.08
+  settle_stable_time: 0.30
+  min_settle_time: 0.50
+  max_settle_time: 1.50
+  turn_hold_position_gain: 0.45
+  turn_max_hold_speed: 0.08
+
+turn_east:
+  yaw: 0.0
+  tolerance: 0.08
+  max_yaw: 0.28
+  stable_time: 0.35
+  resume_min_x: 33.55
+  moving_speed: 0.20
+  moving_yaw_gain: 1.40
+  moving_max_yaw: 0.65
+
+platform:
+  center_y: 21.3750
+  max_center_error: 0.22
+  resume_min_x: 33.80
+  resume_min_base_z: 3.05
+  max_forward: 0.50
+  min_forward: 0.20
+  max_yaw: 0.65
+  points:
+    - pos: [34.0500, 21.3750]
+      radius: 0.12
+    - pos: [34.5000, 21.3750]
+      radius: 0.12
+    - pos: [34.8825, 21.3750]
+      radius: 0.18
+      scoring_waypoint: 27
+      stop_after: true
+
+wp27_stop:
+  target: [34.8825, 21.3750]
+  min_brake_time: 0.25
+  max_brake_time: 1.00
+  brake_gain: 0.85
+  lateral_damping: 0.35
+  max_reverse: 0.22
+  max_stop_speed: 0.10
+  stable_time: 0.20
+  hold_radius: 0.18
+  max_hold_stop_speed: 0.045
+  max_abs_vertical_speed: 0.10
+  hold_stable_time: 1.00
+  position_gain: 0.35
+  velocity_gain: 0.25
+  max_hold_speed: 0.08
+
+post_wp27:
+  enabled: true
+  resume_radius: 0.35
+  min_resume_base_z: 2.65
+  stock_target_index: 36
+  stock_segment_start: [34.8825, 21.3750]
+
+  allow_recovery_from_index: 0
+  via_recovery_from_index: 1000000
+  pole_recovery_target_indices: []
+  safety_check_from_index: 1000000
+
+  stock_speed_profiles:
+    36:
+      max_forward: 1.00
+      max_yaw: 1.00
+      slowdown_distance: 0.25
